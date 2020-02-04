@@ -2,7 +2,7 @@ odoo.define('data_fake.faker', function (require) {
     "use strict";
 
     const base = require('web_editor.base'),
-        Model = require('web.Model'),
+        rpc = require('web.rpc'),
         core = require('web.core'),
         _t = core._t,
         names = [_t('street'), _t('street2'), _t('city'), _t('postcode'), _t('url'), _t('job'), _t('email'), _t('phone'), _t('first_name'), _t('last_name'), _t('company'), _t('text'), _t('sentence'), _t('full_name')],
@@ -12,10 +12,11 @@ odoo.define('data_fake.faker', function (require) {
     let menu = undefined;
 
     function do_request($target, action = 'sentence') {
-        const model = new Model('data.fake');
-
-        model
-            .call('get_fake', [[], action], {})
+        rpc.query({
+            model: 'data.fake',
+            method: 'get_fake',
+            args: [[], action],
+        })
             .then(function (result) {
                 $target.val(result);
             })
