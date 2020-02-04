@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="assets_frontend" name="data fake frontend assets" inherit_id="web.assets_frontend">
+        <xpath expr="." position="inside">
+            <script type="text/javascript" src="/data_fake/static/src/vendor/bootstrap-menu/BootstrapMenu.min.js"/>
+            <script type="text/javascript" src="/data_fake/static/src/js/data_fake.js"/>
+        </xpath>
+    </template>
+</odoo>
